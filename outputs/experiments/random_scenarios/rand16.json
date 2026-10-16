@@ -1,0 +1,1 @@
+{"name": "rand16", "service_capacity": 4, "storage_capacity": 6, "overflow_weight": 4.31, "switch_weight": 1.0, "link": {"from": "A", "to": "B", "phase": "EW", "fraction": 0.6}, "arrivals": {"A": {"NS": [3, 8, 5, 1], "EW": [7, 2, 8, 3]}, "B": {"NS": [7, 6, 6, 5], "EW": [0, 1, 7, 6]}}}

@@ -1,0 +1,81 @@
+{
+ "scenario": "R",
+ "seed": 4,
+ "p": 4,
+ "lam_o": 1.0,
+ "init": "interp",
+ "baselines": {
+  "best_alternating": {
+   "schedule": "10101010",
+   "cost": 116.0
+  },
+  "greedy": {
+   "schedule": "01111001",
+   "cost": 92.5
+  },
+  "exact_enumeration": {
+   "schedule": "11101010",
+   "cost": 72.0,
+   "n_optimal": 1
+  },
+  "uniform_random_expected": {
+   "cost": 151.25
+  },
+  "qubo_exact_minimizer": {
+   "schedule": "11101010",
+   "cost": 72.0,
+   "regret_pct": 0.0
+  },
+  "qubo_cost_correlation": 0.9948541153701416
+ },
+ "qaoa_raw": {
+  "E_Q": 88.13330078125,
+  "C_star": 72.0,
+  "C_rand": 151.25,
+  "lift": 0.7964252267350158,
+  "elite_fraction": 0.634765625,
+  "enrichment": 12.5,
+  "p_optimal": 0.087890625,
+  "best_sampled": "11101010",
+  "best_sampled_cost": 72.0,
+  "shots": 4096
+ },
+ "qaoa_most_frequent": {
+  "schedule": "11111010",
+  "cost": 79.5
+ },
+ "hybrid_qaoa_plus_local_search": {
+  "schedule": "11101010",
+  "cost": 72.0,
+  "note": "classical refinement of top-10 samples; NOT raw QAOA output"
+ },
+ "training": {
+  "objective_evaluations": 300,
+  "final_objective_normalised": -1.4162125547953017,
+  "energy_scale": 45.20158839852865,
+  "params_normalised": [
+   0.5921258769559511,
+   1.3027751342355403,
+   1.928720688957977,
+   2.4445369716832035,
+   -0.7010788513642005,
+   -0.4247885615232006,
+   -0.21503192064981533,
+   -0.11615476048303842
+  ],
+  "gammas_physical": [
+   0.013099669678316555,
+   0.02882144589144453,
+   0.042669312236398284,
+   0.054080775881822224
+  ],
+  "betas": [
+   -0.7010788513642005,
+   -0.4247885615232006,
+   -0.21503192064981533,
+   -0.11615476048303842
+  ]
+ },
+ "consistency_tvd_numpy_vs_qiskit": 9.32465667835058e-16,
+ "runtime_s": 1.4458942413330078
+}

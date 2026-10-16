@@ -1,0 +1,27 @@
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Pytest / Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs & outputs (optional, remove if you want outputs committed)
+outputs/*.png
+outputs/*.csv
+outputs/*.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
