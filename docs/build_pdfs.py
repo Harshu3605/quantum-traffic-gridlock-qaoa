@@ -70,7 +70,7 @@ def table(lines, st, width):
     rows = [[c.strip() for c in re.split(r"(?<!\\)\|", l.strip())[1:-1]] for l in lines]
     rows = [r for r in rows if not all(re.fullmatch(r":?-+:?", c) for c in r)]
     n = len(rows[0])
-    first = 0.46 if n == 3 else 0.28
+    first = 0.2 if rows[0][0] == "Area" else 0.46 if n == 3 else 0.28
     widths = [width * first] + [width * (1 - first) / (n - 1)] * (n - 1)
     data = [[Paragraph(("<b>%s</b>" if i == 0 else "%s") % inline(c), st["cell"]) for c in r] for i, r in enumerate(rows)]
     t = Table(data, colWidths=widths, hAlign="LEFT")

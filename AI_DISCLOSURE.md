@@ -1,24 +1,22 @@
 # AI-use disclosure (outside report page limit)
 
-**Tool.** Claude (Anthropic, model Claude Opus 5.5), used through Claude Code.
+**AI tool used.** Claude (Anthropic, model Claude Opus 5.5) through Claude Code, a coding assistant. The rules (Sec. 10) permit AI assistants and general-purpose libraries, provided teams declare the assistance and verify the results independently. This page does that.
 
-**What the AI did.**
-- Read the problem statement.
-- Proposed the formulation: exact per-approach decomposition plus an order-2 Walsh projection.
-- Wrote all code in `qtraffic/`, `run.py`, `experiments.py` and `tests/`.
-- Ran the experiments and drafted README.md, REPORT.md, this disclosure and the plain-language explainer (`docs/`), including the scripts that render them to PDF.
+**Who did what.**
+| Area | Team (humans) | AI assistant |
+|---|---|---|
+| Problem understanding and scope | Read the problem statement and set the goal: an end-to-end pipeline that follows every PS requirement and reports results honestly | Turned the PS into a requirement checklist (CLI, files, limits, baselines, metrics) |
+| Official inputs | Obtained the scorer and scenario R. Followed up with the organisers until scenario H was released, then supplied H | Used the files unmodified and ran H with unchanged code |
+| Modelling and QUBO | Required strict compliance with the PS rules, including no hard-coded or answer-encoding QUBO, and accepted the documented rule | Proposed and implemented the per-approach decomposition and the order-2 Walsh projection |
+| QAOA and experiments | Required compliance with the PS resource limits and honest reporting of results | Wrote the QAOA code, the baselines, the ablations and the 30-scenario generalisation test |
+| Submission checks | Caught that a pasted submission checklist belonged to another track, and confirmed the correct one | Mapped every item of the correct checklist to a file |
+| Repository and submission | Chose the repository name, created the public GitHub repo, made the initial commit and push, and uploads the Drive submission | Added later commits and the `v1.x-submission` tags, and assembled the Drive folder and zip |
+| Documentation | Asked for a plain-language explainer so the team could understand and present the work, and reviewed the outputs | Drafted the README, the report, this disclosure and the explainer |
 
-**What the team did.**
-- Provided the problem statement and the organisers' official scorer and scenario files (R and H).
-- Directed the work, chose the repository, and created and published the GitHub repo.
-- Reviewed the outputs.
+**How the results were verified (not taken on trust from the AI).**
+- Every reported cost comes from the organisers' `official/scorer.py`, used unmodified. It reproduces the PS verification costs 116, 146, 237 and 92.5.
+- Our simulator and the QUBO decomposition were asserted equal to the official scorer on 40 random scenarios × 256 schedules. The QUBO↔Ising conversion was also checked (52 automated tests).
+- The Qiskit circuit and the trained numpy state agree to a TVD of about 1e−15. A test re-imports `circuit.qasm`.
+- Results are deterministic per seed. Anyone can regenerate every number with the commands in README.md.
 
-**How results were verified independently of the AI's claims.**
-- All reported costs come from the organisers' `official/scorer.py`, used unmodified. Our simulator and QUBO decomposition are asserted equal to it on 40 random scenarios × 256 schedules. The four verification costs come from the PS.
-- The decomposition C = Σ D_k + switches is asserted exactly on all 256 schedules (unit test).
-- The QUBO↔Ising conversion is asserted equal on sample states (unit test).
-- The Qiskit circuit distribution is compared to the trained numpy distribution (TVD ≈ 1e−15 on every run). A test re-imports `circuit.qasm` and compares it to `counts.json`.
-- Determinism: the same seed gives identical results (unit test).
-- All numbers in REPORT.md are copied from `outputs/experiments/experiments.json` and `outputs/*/seed_*/results.json`, which anyone can regenerate with the commands in README.md.
-
-**Team responsibility.** The team takes responsibility for the submission and has reviewed the submitted outputs. The H outputs were produced by the unchanged pipeline right after the organisers released `scenario_H.json`.
+**Responsibility.** The team takes responsibility for the submission, including the AI-assisted parts.
