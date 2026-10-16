@@ -27,19 +27,22 @@ Run options: `--p {1..4}` (default 4), `--init {interp,ramp,random}` (default `i
 ## Layout
 ```
 qtraffic/scenario.py   JSON loading (tolerant of key aliases), validation
-official/              organisers' scorer.py + scenario_R.json + README, copied UNMODIFIED
+official/              organisers' scorer.py + scenario_R.json + scenario_H.json + README, copied UNMODIFIED
 qtraffic/scorer.py     official_cost() calls official/scorer.py; simulate() is our own re-implementation (cross-check)
 qtraffic/qubo.py       modelling rule -> QUBO / Ising
 qtraffic/qaoa.py       numpy statevector training (<=300 evals) + Qiskit circuit + sampling
 qtraffic/baselines.py  alternating, greedy, enumeration, random mean, QUBO ceiling, metrics, hybrid
 run.py                 required CLI;  experiments.py  validation suite;  tests/  pytest
-scenarios/H_sample.json  SYNTHETIC stand-in for H (scenario R = official/scenario_R.json, the organisers' file)
-outputs/R/seed_0..4, outputs/H_sample/seed_0..4, outputs/experiments/experiments.json
+official/scenario_R.json, official/scenario_H.json  the organisers' scenario files (unmodified)
+outputs/R/seed_0..4, outputs/H/seed_0..4, outputs/experiments/experiments.json
 ```
 
 **Scorer.** Every reported cost comes from the organisers' `official/scorer.py`, called unchanged. Our own simulator and the per-approach QUBO decomposition match it exactly: on all 256 schedules for 40 random scenarios, including fractions such as 0.45 and 0.65 where decimal half-up rounding matters (`tests/test_official.py`). Scenario JSON uses the official schema (`service_capacity`, `storage_capacity`, `link.phase`). A missing key raises an error instead of falling back to a default.
 
-**Note on H.** The official scenario H is not in this folder yet. `scenarios/H_sample.json` is a SYNTHETIC scenario within the hidden ranges. When H is released, run it without changing any code:
-`for s in 0 1 2 3 4; do python run.py --scenario H.json --seed $s --out outputs/H/seed_$s; done`
+**Reproduce the submitted outputs for R and H** (each run takes about 2 s):
+```bash
+for s in 0 1 2 3 4; do python run.py --scenario official/scenario_R.json --seed $s --out outputs/R/seed_$s; done
+for s in 0 1 2 3 4; do python run.py --scenario official/scenario_H.json --seed $s --out outputs/H/seed_$s; done
+```
 
 See [REPORT.md](REPORT.md) for the derivation and results, and [AI_DISCLOSURE.md](AI_DISCLOSURE.md) for the AI-use disclosure.

@@ -238,6 +238,24 @@ def build():
                     ["Best plan kitni baar", f"{100 * popt:.1f}%", "4096 mein se itne % baar sabse achha plan (72) aaya"],
                     ["5 seeds par", "lagbhag same", "Nateeja stable hai, kismat se nahi aaya"]], [38, 30, 102]))
 
+    H = [json.load(open(os.path.join(ROOT, "outputs", "H", f"seed_{k}", "results.json"))) for k in range(5)]
+    hb = H[0]["baselines"]
+    hEQ = sum(h["qaoa_raw"]["E_Q"] for h in H) / 5
+    hl = [h["qaoa_raw"]["lift"] for h in H]
+    s.append(Paragraph("7b. Nateeja — Official Scenario H", H2))
+    s.append(Paragraph("Organisers ka doosra scenario H zyada bhaari traffic wala hai (capacity 4, link NS par). "
+                       "Code bina badle chalaya:", P))
+    s.append(table([["Tareeka", "Cost (H)"],
+                    ["Random plan (average)", f"{hb['uniform_random_expected']['cost']:.1f}"],
+                    ["Alternating", f"{hb['best_alternating']['cost']:g}"],
+                    ["Greedy", f"{hb['greedy']['cost']:g}"],
+                    ["QUBO formula ka best", f"{hb['qubo_exact_minimizer']['cost']:g} (galti {hb['qubo_exact_minimizer']['regret_pct']:.1f}%)"],
+                    ["QAOA (4096 ka average)", f"{hEQ:.1f}"],
+                    ["Sabse achha possible", f"{hb['exact_enumeration']['cost']:g}"]], [100, 70], bold_rows=(5,)))
+    s.append(Spacer(1, 4))
+    s.append(Paragraph(f"H par QAOA ka average greedy se bhi behtar raha. Lift {min(hl):.2f}–{max(hl):.2f}, aur top-13 "
+                       f"plans random ke mukable ~{sum(h['qaoa_raw']['enrichment'] for h in H) / 5:.0f} guna zyada baar aaye.", P))
+
     s.append(Paragraph("8. Saath mein kya jaancha (baselines)", H2))
     s.append(table([["Tareeka", "Kya karta hai", "Cost (R)"],
                     ["Alternating", "Har slot signal badlo (4 tarah ke)", f"{b['best_alternating']['cost']:g}"],
@@ -254,7 +272,7 @@ def build():
                   f"Jode-wala formula hamesha perfect nahi hota. Ek random scenario mein yeh {gs['qubo_regret_max_pct']:.1f}% "
                   "peeche raha.",
                   "Sab kuch quantum <b>simulator</b> par chala hai, asli quantum hardware par nahi. Hardware ka noise nahi jaancha.",
-                  "Official scenario H ka nateeja abhi baaki hai. Code bina badle uspar chalega."])
+                  "R aur H dono organisers ki official files hain. Judges ka unseen scenario S bhi isi code par bina badle chalega."])
 
     s.append(KeepTogether([Paragraph("10. Shabdkosh (mushkil shabd)", H2), table([["Shabd", "Aasaan matlab"],
                     ["Bit", "0 ya 1 — yahaan: EW ya NS hara"],

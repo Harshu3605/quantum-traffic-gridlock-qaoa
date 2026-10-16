@@ -9,7 +9,7 @@
 - Ran the experiments and drafted README.md, REPORT.md, this disclosure and the plain-language explainer (`docs/`), including the scripts that render them to PDF.
 
 **What the team did.**
-- Provided the problem statement and the organisers' official scorer and scenario files.
+- Provided the problem statement and the organisers' official scorer and scenario files (R and H).
 - Directed the work, chose the repository, and created and published the GitHub repo.
 - Reviewed the outputs.
 
@@ -21,4 +21,4 @@
 - Determinism: the same seed gives identical results (unit test).
 - All numbers in REPORT.md are copied from `outputs/experiments/experiments.json` and `outputs/*/seed_*/results.json`, which anyone can regenerate with the commands in README.md.
 
-**Team responsibility.** The team must review the derivation, and rerun the pipeline on the official H before submission. The AI did not have H.
+**Team responsibility.** The team takes responsibility for the submission and has reviewed the submitted outputs. The H outputs were produced by the unchanged pipeline right after the organisers released `scenario_H.json`.

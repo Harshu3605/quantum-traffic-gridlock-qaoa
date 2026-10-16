@@ -13,7 +13,7 @@ import numpy as np
 from run import run
 
 SEEDS = [0, 1, 2, 3, 4]
-SCEN = {"R": "official/scenario_R.json", "H_sample": "scenarios/H_sample.json"}
+SCEN = {"R": "official/scenario_R.json", "H": "official/scenario_H.json"}
 
 
 def random_scenario(rng, k):
@@ -47,16 +47,16 @@ def main():
     t0 = time.time()
     report = {}
 
-    # 1. seed robustness on R and H_sample (default configuration)
-    for name in ("R", "H_sample"):
+    # 1. seed robustness on R and H (default configuration)
+    for name in ("R", "H"):
         rs = [run(SCEN[name], s, None, write=False) for s in SEEDS]
         report[f"seeds_{name}"] = {"per_seed": [{"seed": r["seed"], **{k: r["qaoa_raw"][k] for k in
                                     ("E_Q", "lift", "enrichment", "p_optimal", "best_sampled_cost")}}
                                    for r in rs], "baselines": rs[0]["baselines"], **summarize(rs)}
 
-    # 2. ablations on R and H_sample: depth x init, and overflow multiplier
+    # 2. ablations on R and H: depth x init, and overflow multiplier
     abl = []
-    for name in ("R", "H_sample"):
+    for name in ("R", "H"):
         for p in (1, 2, 3, 4):
             for init in ("interp", "ramp", "random"):
                 rs = [run(SCEN[name], s, None, p=p, init=init, write=False) for s in SEEDS]
@@ -105,7 +105,7 @@ def main():
     with open(os.path.join(a.out, "experiments.json"), "w") as f:
         json.dump(report, f, indent=1)
     print(json.dumps({k: report[k] for k in ("generalisation_summary",)}, indent=1))
-    for n in ("R", "H_sample"):
+    for n in ("R", "H"):
         s = report[f"seeds_{n}"]
         print(n, {k: round(s[k], 3) for k in ("lift_mean", "lift_min", "enrichment_mean", "p_opt_mean")})
     for r in abl:

@@ -1,0 +1,51 @@
+{
+ "bit_order": "A slot1..4 then B slot1..4; 1 = North-South green, 0 = East-West green",
+ "bits": "10010111",
+ "primary": "qaoa_most_frequent (raw QAOA mode)",
+ "qaoa_most_frequent": {
+  "bits": "10010111",
+  "A": "1001",
+  "B": "0111",
+  "cost": 235.0,
+  "delay": 102,
+  "overflow": 26,
+  "switches": 3,
+  "final_queues": {
+   "A": {
+    "NS": 10,
+    "EW": 10
+   },
+   "B": {
+    "NS": 8,
+    "EW": 14
+   }
+  }
+ },
+ "qaoa_best_sampled": {
+  "bits": "10000111",
+  "cost": 234.0,
+  "delay": 102,
+  "overflow": 26,
+  "switches": 2,
+  "final_queues": {
+   "A": {
+    "NS": 14,
+    "EW": 6
+   },
+   "B": {
+    "NS": 8,
+    "EW": 14
+   }
+  }
+ },
+ "qubo_exact_minimizer": {
+  "schedule": "10010110",
+  "cost": 236.0,
+  "regret_pct": 0.8547008547008547
+ },
+ "hybrid_qaoa_plus_local_search": {
+  "schedule": "10000111",
+  "cost": 234.0,
+  "note": "classical refinement of top-10 samples; NOT raw QAOA output"
+ }
+}

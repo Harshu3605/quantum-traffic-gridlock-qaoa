@@ -10,11 +10,11 @@
   "worst_seed_lift_median": 0.8504734059639252,
   "enrichment_mean": 12.303814102564104,
   "greedy_regret_mean_pct": 5.445562894008047,
-  "runtime_max_s": 0.46511268615722656
+  "runtime_max_s": 0.4426870346069336
  }
 }
 R {'lift_mean': 0.796, 'lift_min': 0.792, 'enrichment_mean': 12.554, 'p_opt_mean': 0.083}
-H_sample {'lift_mean': 0.822, 'lift_min': 0.819, 'enrichment_mean': 10.605, 'p_opt_mean': 0.085}
+H {'lift_mean': 0.875, 'lift_min': 0.873, 'enrichment_mean': 16.945, 'p_opt_mean': 0.115}
 R p 1 interp lam_o 1.0 lift_mean 0.619 lift_min 0.613 enr 6.22 
 R p 1 ramp lam_o 1.0 lift_mean 0.619 lift_min 0.613 enr 6.22 
 R p 1 random lam_o 1.0 lift_mean 0.619 lift_min 0.613 enr 6.22 
@@ -30,19 +30,19 @@ R p 4 random lam_o 1.0 lift_mean 0.692 lift_min 0.597 enr 8.55
 R p 4 interp lam_o 0.5 lift_mean 0.796 lift_min 0.790 enr 12.36 regret 0.0%
 R p 4 interp lam_o 1.5 lift_mean 0.796 lift_min 0.791 enr 12.64 regret 0.0%
 R p 4 interp lam_o 2.0 lift_mean 0.798 lift_min 0.792 enr 12.80 regret 0.0%
-H_sample p 1 interp lam_o 1.0 lift_mean 0.509 lift_min 0.504 enr 4.10 
-H_sample p 1 ramp lam_o 1.0 lift_mean 0.509 lift_min 0.504 enr 4.10 
-H_sample p 1 random lam_o 1.0 lift_mean 0.509 lift_min 0.504 enr 4.10 
-H_sample p 2 interp lam_o 1.0 lift_mean 0.708 lift_min 0.704 enr 7.58 
-H_sample p 2 ramp lam_o 1.0 lift_mean 0.643 lift_min 0.640 enr 6.29 
-H_sample p 2 random lam_o 1.0 lift_mean 0.536 lift_min 0.498 enr 4.51 
-H_sample p 3 interp lam_o 1.0 lift_mean 0.788 lift_min 0.784 enr 9.53 
-H_sample p 3 ramp lam_o 1.0 lift_mean 0.707 lift_min 0.641 enr 7.57 
-H_sample p 3 random lam_o 1.0 lift_mean 0.688 lift_min 0.513 enr 7.24 
-H_sample p 4 interp lam_o 1.0 lift_mean 0.822 lift_min 0.819 enr 10.60 
-H_sample p 4 ramp lam_o 1.0 lift_mean 0.792 lift_min 0.787 enr 9.80 
-H_sample p 4 random lam_o 1.0 lift_mean 0.652 lift_min 0.509 enr 6.68 
-H_sample p 4 interp lam_o 0.5 lift_mean 0.809 lift_min 0.803 enr 10.13 regret 0.0%
-H_sample p 4 interp lam_o 1.5 lift_mean 0.826 lift_min 0.824 enr 10.78 regret 2.7%
-H_sample p 4 interp lam_o 2.0 lift_mean 0.828 lift_min 0.824 enr 10.85 regret 2.7%
-total 137s
+H p 1 interp lam_o 1.0 lift_mean 0.431 lift_min 0.427 enr 4.35 
+H p 1 ramp lam_o 1.0 lift_mean 0.431 lift_min 0.427 enr 4.35 
+H p 1 random lam_o 1.0 lift_mean 0.186 lift_min 0.019 enr 2.37 
+H p 2 interp lam_o 1.0 lift_mean 0.671 lift_min 0.663 enr 10.44 
+H p 2 ramp lam_o 1.0 lift_mean 0.590 lift_min 0.588 enr 6.24 
+H p 2 random lam_o 1.0 lift_mean 0.451 lift_min 0.422 enr 4.93 
+H p 3 interp lam_o 1.0 lift_mean 0.839 lift_min 0.837 enr 15.48 
+H p 3 ramp lam_o 1.0 lift_mean 0.688 lift_min 0.588 enr 9.75 
+H p 3 random lam_o 1.0 lift_mean 0.637 lift_min 0.454 enr 8.88 
+H p 4 interp lam_o 1.0 lift_mean 0.875 lift_min 0.873 enr 16.95 
+H p 4 ramp lam_o 1.0 lift_mean 0.515 lift_min 0.374 enr 7.94 
+H p 4 random lam_o 1.0 lift_mean 0.733 lift_min 0.721 enr 11.28 
+H p 4 interp lam_o 0.5 lift_mean 0.885 lift_min 0.882 enr 16.92 regret 0.4%
+H p 4 interp lam_o 1.5 lift_mean 0.870 lift_min 0.868 enr 16.84 regret 0.9%
+H p 4 interp lam_o 2.0 lift_mean 0.866 lift_min 0.862 enr 16.81 regret 0.9%
+total 114s
