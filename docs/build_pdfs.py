@@ -36,7 +36,7 @@ def styles(base):
         "h1": ParagraphStyle("h1", fontName="Bold", fontSize=base + 6.5, leading=base + 9, textColor=INK, spaceAfter=2),
         "meta": ParagraphStyle("meta", fontName="Body", fontSize=base - 1, leading=base + 1.5, textColor=MUTED, spaceAfter=5),
         "h2": ParagraphStyle("h2", fontName="Bold", fontSize=base + 2, leading=base + 4, textColor=ACCENT,
-                             spaceBefore=5, spaceAfter=2),
+                             spaceBefore=5, spaceAfter=2, keepWithNext=1),
         "p": ParagraphStyle("p", fontName="Body", fontSize=base, leading=base * 1.32, textColor=INK, spaceAfter=3),
         "li": ParagraphStyle("li", fontName="Body", fontSize=base, leading=base * 1.32, textColor=INK,
                              leftIndent=10, bulletIndent=1, spaceAfter=1),
@@ -90,6 +90,10 @@ def md_to_flow(md, st, width, meta):
             flow.append(Paragraph(meta, st["meta"]))
         elif l.startswith("## "):
             flow.append(Paragraph(inline(l[3:]), st["h2"]))
+        elif re.fullmatch(r"<!-- fig:(\w+) -->", l.strip()):  # figure marker (hidden on GitHub)
+            sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+            from figures import FIGS
+            flow += [FIGS[re.fullmatch(r"<!-- fig:(\w+) -->", l.strip()).group(1)](width), Spacer(1, 4)]
         elif l.startswith("|"):
             block = []
             while i < len(lines) and lines[i].startswith("|"):
