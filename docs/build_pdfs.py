@@ -137,7 +137,7 @@ def render(src, out, label, base, max_pages, meta):
 
 
 if __name__ == "__main__":
-    team = os.environ.get("TEAM", "")
+    team = os.environ.get("TEAM", "Team: Prakhar Keshniya, Harsh Sahu, Pranav Keshniya")
     meta = (f"{team}  ·  " if team else "") + f"Code, outputs and run instructions: {REPO}"
     render("REPORT.md", os.path.join(ROOT, "docs", "Technical_Report.pdf"), "Technical Report", 10, 3, meta)
     render("AI_DISCLOSURE.md", os.path.join(ROOT, "docs", "AI_Disclosure.pdf"), "AI-use Disclosure", 10.5, 1, meta)

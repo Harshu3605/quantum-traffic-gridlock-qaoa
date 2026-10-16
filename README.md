@@ -1,5 +1,7 @@
 # Quantum Traffic Gridlock — QUBO + QAOA signal coordination
 
+**Team: Prakhar Keshniya, Harsh Sahu, Pranav Keshniya**
+
 IBM Qiskit Fall Fest 2026 (QC@IITI). This pipeline coordinates traffic-light phases at two linked intersections (A → B) over four slots. It builds a QUBO from a documented traffic-modelling rule, trains QAOA with a numpy statevector, samples the bound Qiskit circuit 4,096 times, and compares the result against every baseline the problem statement asks for.
 
 ## Quick start

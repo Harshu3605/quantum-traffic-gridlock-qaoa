@@ -150,6 +150,7 @@ def build():
     s.append(Paragraph("Quantum Traffic Gridlock", H1))
     s.append(Paragraph("Quantum computer se traffic signal ka plan kaise banate hain — bilkul shuru se, "
                        "aasaan bhasha mein. Kisi ko bhi samjhane ke liye.", SUB))
+    s.append(Paragraph("Team: Prakhar Keshniya, Harsh Sahu, Pranav Keshniya", SUB))
     s.append(box(Paragraph(
         f"<b>Ek line mein:</b> Do jude hue traffic signals ka 4 slot ka plan banana tha. Humne traffic ke "
         f"niyamon se quantum computer ke samajhne layak formula (QUBO) banaya, aur quantum algorithm (QAOA) ne "
